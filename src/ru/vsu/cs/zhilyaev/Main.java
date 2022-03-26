@@ -11,12 +11,15 @@ public class Main {
         list.addFirst(1);
         list.addFirst(1);
         list.addLast(1);
+
         System.out.println("Начальный список:");
         for (int i = 0; i < list.size(); i++) {
             System.out.print((i > 0 ? ", " : "") + list.get(i));
         }
         System.out.println();
+
         list.removeRepeats();
+
         System.out.println("Изменненный список:");
         for (int i = 0; i < list.size(); i++) {
             System.out.print((i > 0 ? ", " : "") + list.get(i));
