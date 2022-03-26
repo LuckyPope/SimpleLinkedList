@@ -137,11 +137,11 @@ public class SimpleLinkedList<T> implements Iterable<T>  {
 
     public void removeRepeats() throws SimpleLinkedListException {
         checkEmptyError();
-        SimpleLinkedListNode currEL = head;
+        SimpleLinkedListNode currEL = head.next;
         SimpleLinkedListNode prevEl = head;
 
         for (int i = 1; i < size(); i++) {
-            if (get(i) == get(i - 1)) {
+            if (currEL.value == prevEl.value) {
                 SimpleLinkedListNode prev = getNode(i - 1);
                 prev.next = prev.next.next;
                 if (prev.next == null) {
@@ -149,6 +149,10 @@ public class SimpleLinkedList<T> implements Iterable<T>  {
                 }
                 size--;
                 i--;
+                currEL = currEL.next;
+            } else {
+                currEL = currEL.next;
+                prevEl = prevEl.next;
             }
         }
 
