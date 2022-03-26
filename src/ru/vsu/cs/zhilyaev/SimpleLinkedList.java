@@ -137,39 +137,33 @@ public class SimpleLinkedList<T> implements Iterable<T>  {
 
     public void removeRepeats() throws SimpleLinkedListException {
         checkEmptyError();
-        SimpleLinkedListNode currEL = head.next;
         SimpleLinkedListNode prevEl = head;
 
-        for (int i = 1; i < size(); i++) {
-            if (currEL.value == prevEl.value) {
-                SimpleLinkedListNode prev = getNode(i - 1);
-                prev.next = prev.next.next;
-                if (prev.next == null) {
-                    tail = prev;
-                }
+        while (prevEl.next != null) {
+            if (prevEl.value == prevEl.next.value) {
+                prevEl.next = prevEl.next.next;
                 size--;
-                i--;
-                currEL = currEL.next;
             } else {
-                currEL = currEL.next;
                 prevEl = prevEl.next;
             }
         }
 
-//            for (int i = 1; i < size(); i++) {
-//                T currentNum = currEL.next.value;
-//                T nextNum = prevEl.value;
-//                if (currentNum == nextNum) {
-//                    SimpleLinkedListNode prev = getNode(i - 1);
-//                    prev.next = prev.next.next;
-//                    if (prev.next == null) {
-//                        tail = prev;
-//                    }
-//                    size--;
-//                    i--;
+//        for (int i = 1; i < size(); i++) {
+//            if (currEL.value == prevEl.value) {
+//                SimpleLinkedListNode prev = getNode(i - 1); // убрать
+//                prev.next = prev.next.next;
+//                if (prev.next == null) {
+//                    tail = prev;
 //                }
+//                size--;
+//                i--;
+//                currEL = currEL.next;
+//            } else {
+//                currEL = currEL.next;
+//                prevEl = prevEl.next;
 //            }
-        }
+//        }
+    }
 
 
     @Override

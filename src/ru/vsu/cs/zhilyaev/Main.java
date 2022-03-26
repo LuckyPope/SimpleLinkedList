@@ -6,8 +6,8 @@ public class Main {
         SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
         list.addFirst(1);
         list.addFirst(1);
-        list.addFirst(2);
-        list.addFirst(2);
+        list.addFirst(1);
+        list.addFirst(1);
         list.addFirst(1);
         list.addFirst(1);
         list.addLast(1);
