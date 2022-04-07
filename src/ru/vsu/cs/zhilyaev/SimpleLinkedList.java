@@ -125,44 +125,19 @@ public class SimpleLinkedList<T> implements Iterable<T>  {
         return tail.value;
     }
 
-    public void removeRepeat() throws SimpleLinkedListException {
-        checkEmptyError();
-        for (int i = 1; i < size(); i++) {
-            if (get(i) == get(i - 1)) {
-                remove(i);
-                size--;
+    public void removeRepeats() {
+        if (size() != 0) {
+            SimpleLinkedListNode prevEl = head;
+
+            while (prevEl.next != null) {
+                if (prevEl.value == prevEl.next.value) {
+                    prevEl.next = prevEl.next.next;
+                    size--;
+                } else {
+                    prevEl = prevEl.next;
+                }
             }
         }
-    }
-
-    public void removeRepeats() throws SimpleLinkedListException {
-        checkEmptyError();
-        SimpleLinkedListNode prevEl = head;
-
-        while (prevEl.next != null) {
-            if (prevEl.value == prevEl.next.value) {
-                prevEl.next = prevEl.next.next;
-                size--;
-            } else {
-                prevEl = prevEl.next;
-            }
-        }
-
-//        for (int i = 1; i < size(); i++) {
-//            if (currEL.value == prevEl.value) {
-//                SimpleLinkedListNode prev = getNode(i - 1); // убрать
-//                prev.next = prev.next.next;
-//                if (prev.next == null) {
-//                    tail = prev;
-//                }
-//                size--;
-//                i--;
-//                currEL = currEL.next;
-//            } else {
-//                currEL = currEL.next;
-//                prevEl = prevEl.next;
-//            }
-//        }
     }
 
 
